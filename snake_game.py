@@ -68,11 +68,16 @@ class Snake:
                 new_body.insert(0, self.body[0] + self.direction)
                 self.body = new_body
 
-    # def change_direction(self, new_direction):
-    #     # 防止180度转向
-    #     if (self.direction.x * new_direction.x + self.direction.y * new_direction.y) == 0:
-    #         return
-    #     self.new_direction = new_direction
+    ## def change_direction(self, new_direction):
+    ##     # 防止180度转向（反向移动），但这段代码逻辑会导致任何垂直方向变化都被阻止（比如上下左右之间的切换），而不仅仅是反向移动：
+    ##     if (self.direction.x * new_direction.x + self.direction.y * new_direction.y) == 0:
+    ##         return
+    ##     self.new_direction = new_direction
+    ## 示例：
+    ## 如果蛇正在向右 (Vector2(1, 0))，此时按下 W（即向上），该逻辑不会允许改变方向
+    ## · 原方向：(1, 0)
+    ## · 新方向：(0, -1)
+    ## · dot product = 1*0 + 0*(-1) = 0 → 条件成立 → 被拒绝！
     def change_direction(self, new_direction):
         # 只有当新方向与当前方向完全相反时才不允许转向
         if (self.direction.x + new_direction.x == 0 and
