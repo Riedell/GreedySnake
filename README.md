@@ -109,6 +109,7 @@ uv run .\snake_game.py # uv run
 
 ### 1. pychram提示：Error: Python packaging tool 'setuptools' not found
 
+执行下面的命令安装setuptools到当前项目的虚拟环境中
 ```bash
 uv pip install setuptools
 ```
